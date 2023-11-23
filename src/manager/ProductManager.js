@@ -90,38 +90,43 @@ class ProductManager{
 
 
         if (productToEdit) {
-            const index = this.Products[this.Products.length - 1].id + 1;
-            console.log(this.Products[index].stock)
+            const index = this.Products.findIndex(product => product.id == id);
+            console.log(index)
+
+            if (index !== -1) {
+                let titleP = updatedProduct.title ?? productToEdit.title;
+                let descriptionP = updatedProduct.desc ?? productToEdit.desc;
+                let codeP = updatedProduct.code ?? productToEdit.code;
+                let priceP = isNaN(updatedProduct.price) ? productToEdit.price : Number(updatedProduct.price);
+                let stockP = updatedProduct && updatedProduct.stock != null ? updatedProduct.stock : productToEdit.stock;
+                let categoryP = updatedProduct.category ?? productToEdit.category;
+                let statusP = updatedProduct.status ?? productToEdit.status;
+                let thumbnailsP = updatedProduct.thumbnail ?? productToEdit.thumbnail;
 
 
-            let titleP = updatedProduct.title == null ? this.Products[index].title : updatedProduct.title;
-            let descriptionP = updatedProduct.desc == null ? this.Products[index].desc : updatedProduct.desc;
-            let codeP = updatedProduct.code == null ? this.Products[index].code : updatedProduct.code;
-            let priceP = isNaN(updatedProduct.price) ? this.Products[index].price : updatedProduct.price;
-            let stockP = updatedProduct && updatedProduct.stock != null ? updatedProduct.stock : this.Products[index].stock;
-            let categoryP = updatedProduct.category == null ? this.Products[index].category : updatedProduct.category;
-            let statusP = updatedProduct.status == null ? this.Products[index].status : updatedProduct.status;
-            let thumbnailsP = updatedProduct.thumbnail == null ? this.Products[index].thumbnail : updatedProduct.thumbnail;
 
-            this.Products[index] = { 
-              ...this.Products[index],
-              title: titleP, 
-              description: descriptionP, 
-              code: codeP, 
-              price: Number(priceP), 
-              stock: Number(stockP), 
-              status: statusP,
-              category: categoryP,
-              thumbnail: thumbnailsP 
-            }
+                this.Products[index] = { 
+                ...this.Products[index],
+                title: titleP, 
+                description: descriptionP, 
+                code: codeP, 
+                price: Number(priceP), 
+                stock: Number(stockP), 
+                status: statusP,
+                category: categoryP,
+                thumbnail: thumbnailsP 
+                }
 
 
-            const response = await this.SaveFile(this.Products);
-            if (response) {
-                console.log("Producto editado con éxito");
+                const response = await this.SaveFile(this.Products);
+                if (response) {
+                    console.log("Producto editado con éxito");
+                } else {
+                    throw new Error("Failure at editing");
+                }
             } else {
-                throw new Error("Failure at editing");
-            }
+                    throw new Error("Index not found for the product");
+                }
         } else {
             throw new Error("Product not found");
         }

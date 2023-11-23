@@ -88,7 +88,8 @@
 		"price": 14,
 		"thumbnail": "thumbnail-producto8",
 		"stock": 17
-	},{
+	},
+	{
 		"id": 11,
 		"code": "0011",
 		"title": "producto8",
@@ -99,22 +100,24 @@
 	},
 	{
 		"id": 12,
-		"code": "0012",
-		"title": "producto10",
+		"code": "0035",
+		"title": "EXITOS EN LA VIDA",
 		"desc": "descripción producto10",
-		"price": 16,
-		"thumbnail": "thumbnail-producto10",
-		"stock": 13
+		"price": 15,
+		"thumbnail": "thumbnail-producto",
+		"stock": 13,
+		"description": "descripción Postman"
 	},
 	{
 		"id": 13,
-		"code": "0034",
-		"title": "productoCreadoPostman",
+		"code": "0035",
+		"title": "productoEditadoPostman",
 		"desc": "descripción Postman",
-		"price": 11,
+		"price": 15,
 		"status": true,
 		"thumbnail": "thumbnail-producto",
 		"stock": 28,
-		"category": "Camas"
+		"category": "Camas",
+		"description": "descripción Postman"
 	}
 ]
