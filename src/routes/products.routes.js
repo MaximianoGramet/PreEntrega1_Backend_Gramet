@@ -19,7 +19,7 @@ ROUTER.get("/",(req,res)=>{
 ROUTER.get("/:id",(req,res)=>{
     const {id} =req.params
     try{
-        const ResgetProductById = ProManager.getProductById(() => Number(id));
+        const ResgetProductById = ProManager.getProductById(Number(id));
         return res.json(ResgetProductById)
     }catch(error){
         return res.status(404).json({error:error.message})
